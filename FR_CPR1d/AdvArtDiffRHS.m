@@ -61,14 +61,14 @@ end
 u_pface = [u_lbd,0]; % + side
 u_nface = [0,u_rbd]; % - side
 
-BCs = 'Neumann';
+BCs = 'Dirichlet';
 switch BCs
     case 'Periodic' % Apply Periodic BCs
         u_nface( 1 ) = u_nface(end);    % left BD
         u_pface(end) = u_pface( 1 );    % right BD
     case 'Dirichlet' % Apply Dirichlet BCs
-        u_nface( 1 ) = 0;               % left BD
-        u_pface(end) = 0;               % right BD
+        u_nface( 1 ) = 1;               % left BD
+        u_pface(end) = 1;               % right BD
     case 'Neumann' % Apply Neumann BCs
         u_nface( 1 ) = u_pface( 1 );	% left BD
         u_pface(end) = u_nface(end);    % right BD
