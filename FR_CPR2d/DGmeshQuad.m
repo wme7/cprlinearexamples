@@ -389,23 +389,9 @@ classdef DGmeshQuad
     methods
         function obj = DGmeshQuad(mesher,xRange,yRange,nEx,nEy,Pdeg) % The Constuctor
             
-            addpath('~/github/Research-Matlab/DGFEM/FEMmesh') % in Linux
-            
             switch mesher
                     case 'Q4' % Quadrilateral mesh
                         [vx,vy,E2V,nv,ne] = Q4meshGenerator(xRange,yRange,nEx,nEy);
-                    case 'Q4-Polar' % Analytic Grids: Polar
-                        [vx,vy,E2V,nv,ne] = AGmeshGenerator(xRange,yRange,nEx,nEy,'PolarCoordinates');
-                    case 'Q4-Parabolic' % Analytic Grids: Parabolic
-                        [vx,vy,E2V,nv,ne] = AGmeshGenerator(xRange,yRange,nEx,nEy,'ParabolicCylinderCoordinates');
-                    case 'Q4-Elliptic' % Analytic Grids: EllipticCylinderCoordinates
-                        [vx,vy,E2V,nv,ne] = AGmeshGenerator(xRange,yRange,nEx,nEy,'EllipticCylinderCoordinates');
-                    case 'Q4-Horseshoe' % Analytic Grids: Horseshoe
-                        [vx,vy,E2V,nv,ne] = AGmeshGenerator(xRange,yRange,nEx,nEy,'Horseshoe');
-                    case 'Q4-ModifiedHorseshoe' % Analytic Grids: ModifiedHorseshoe
-                        [vx,vy,E2V,nv,ne] = AGmeshGenerator(xRange,yRange,nEx,nEy,'ModifiedHorseshoe');
-                    case 'Q4-BipolarCoordinates' % Analytic Grids: BipolarCoordinates
-                        [vx,vy,E2V,nv,ne] = AGmeshGenerator(xRange,yRange,nEx,nEy,'BipolarCoordinates');
                 otherwise
                     error('Mesher name not in list')
             end
